@@ -5,7 +5,6 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-
 use Illuminate\Support\Facades\Auth;
 
 class User
@@ -17,13 +16,19 @@ class User
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::user()->usertype !== 'admin')
-        {
-            
-            return redirect('dashboard');
+        if (Auth::check()) {
+            // Jika user adalah admin, arahkan ke halaman admin
+            if (Auth::user()->usertype === 'admin') {
+                return redirect()->route('admin.dashboard');
+            }
+
+            // Jika user adalah user biasa, arahkan ke halaman user
+            if (Auth::user()->usertype === 'user') {
+                return redirect()->route('user.Home');
+            }
         }
 
-
-        return $next($request);
+        // Jika tidak login, arahkan ke halaman login atau lainnya
+        return redirect()->route('login');
     }
 }
