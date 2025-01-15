@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\admin\TambahProdukController;
+use App\Http\Controllers\SepatuController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -44,3 +45,5 @@ Route::get('admin/dashboard', [HomeController::class,'index'])->middleware(['aut
 Route::prefix('admin')->group(function () {
     Route::resource('tambahproduk', TambahProdukController::class);
 });
+
+Route::resource('sepatu', SepatuController::class);

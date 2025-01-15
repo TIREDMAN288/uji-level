@@ -50,7 +50,7 @@ class TambahProdukController extends Controller
     public function edit($id)
     {
         $produk = TambahProduk::findOrFail($id);
-        return view('tambahproduk.edit', compact('produk'));
+        return view('admin.tambahproduk.edit', compact('produk'));
     }
 
     // Mengupdate data produk di database
