@@ -48,7 +48,7 @@
         </header>
 
         <nav class="navbar">
-            <a href="index.html">Home</a>
+            <a href="{{ route ('user.Home')}}">Home</a>
             <a href="{{ route('user.About') }}">About</a>
             <div class="dropdown">
                 <button class="dropbtn">
@@ -59,12 +59,11 @@
                         class="dropdown-logo" />
                 </button>
                 <div class="dropdown-content">
-                    <a href="#">Link 1</a>
-                    <a href="#">Link 2</a>
-                    <a href="#">Link 3</a>
+                    <a href="{{ route('user.kategoriPria') }}">Pria</a>
+                    <a href="{{ route('user.kategoriWanita') }}">Wanita</a>
                 </div>
             </div>
-            <a href="#">Chat Whit Admin</a>
+            <a href="{{ route('user.pesan') }}">Chat Whit Admin</a>
             <a href="produk.html">Pesanan</a>
             <a href="produk.html">Riwayat Pesanan</a>
         </nav>

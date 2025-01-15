@@ -17,6 +17,7 @@
         <p>General</p>
         <ul>
           <li><a href="#"><i class="icon-dashboard"></i> Dashboard</a></li>
+          <li><a href="{{ route('user.Home') }}"><i class="icon-dashboard"></i> Dashboard Home</a></li>
           <li><a href="#"><i class="icon-product"></i> Produk</a></li>
           <li><a href="#"><i class="icon-history"></i> Histori</a></li>
           <li><a href="#"><i class="icon-customer"></i> Pelanggan</a></li>
@@ -32,7 +33,7 @@
     <main class="main-content">
       <header class="navbar">
         <div class="navbar-brand">
-          <img src="./asset -ujilevel/logo.png" alt="Logo" class="logo">
+          <img src="{{asset('image/asset -ujilevel/logo.png')}}" alt="Logo" class="logo">
           <span>Street Striders</span>
         </div>
         <div class="navbar-actions">
