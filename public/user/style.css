@@ -690,36 +690,17 @@ h5{
     font-size: 0.9rem;
     color: #ffa500;
 }
-
+/* About Section */
 .About1 .title {
   font-size: 45px;
   font-family: 'Karantina', sans-serif;
   font-weight: 300;
-  text-align: left;
-  margin-left: 60px;
+  text-align: center; /* Mengubah alignment title ke tengah */
   margin-bottom: 20px;
   color: #333; /* Warna gelap untuk kontras yang baik */
 }
 
-.About1 .promo {
-  text-align: center;
-  margin-bottom: 30px;
-  padding: 20px 0; /* Menambahkan padding agar garis tidak terlalu dekat dengan teks */
-  border-bottom: 2px solid #ff9800; /* Garis bawah pada bagian promo */
-}
-
-.About1 .promo h1 {
-  font-size: 2rem;
-  color: #ff9800;
-  margin-bottom: 10px;
-}
-
-.About1 .promo p {
-  font-size: 1rem;
-  color: #555;
-  font-weight: 300;
-}
-
+/* Foto dan Teks */
 .About1 .poto {
   display: flex;
   flex-direction: column;
@@ -730,7 +711,8 @@ h5{
 }
 
 .About1 .poto img {
-  max-width: 80%; /* Mengubah ukuran gambar menjadi lebih kecil */
+  width: 100%; /* Mengubah ukuran gambar agar lebih fleksibel */
+  max-width: 600px; /* Ukuran gambar menjadi lebih besar */
   height: auto;
   border-radius: 10px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
@@ -739,7 +721,7 @@ h5{
 
 .About1 .poto p {
   text-align: justify;
-  max-width: 650px;
+  max-width: 800px; /* Memperbesar area teks untuk keseimbangan */
   font-size: 1rem;
   color: #666;
   line-height: 1.6;
@@ -747,21 +729,26 @@ h5{
 }
 
 .About1 .poto img:hover {
-  transform: scale(1.05);
+  transform: scale(1.05); /* Efek hover untuk gambar */
 }
 
+/* Responsif untuk Tampilan Lebih Lebar */
 @media (min-width: 768px) {
   .About1 .poto {
-    flex-direction: row;
+    flex-direction: row; /* Membuat foto dan teks sejajar horizontal */
     justify-content: space-between;
     align-items: center;
   }
 
-  .About1 .poto img,
+  .About1 .poto img {
+    max-width: 48%; /* Menyusun gambar dan teks lebih seimbang */
+  }
+
   .About1 .poto p {
     max-width: 48%; /* Menjaga keseimbangan antara gambar dan teks */
   }
 }
+
 
 
 .product-container {
@@ -995,111 +982,391 @@ h5{
   transform: scale(1.1);
 }
 
-
-.footer {
-  background-color: #222;
-  color: #fff;
-  padding: 20px 15px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-content {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.footer-left {
-  flex: 1;
-  min-width: 250px;
-  margin-bottom: 20px;
-}
-
-.footer-left h1 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-  text-transform: uppercase;
+.pria h1 {
+  font-size: 24px;
   font-weight: bold;
+  margin-bottom: 20px;
 }
-
-.footer-left img {
-  width: 100%;
-  max-width: 150px;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
-}
-
-.footer-left img:hover {
-  transform: scale(1.1);
-}
-
-.footer-right {
-  flex: 2;
-  min-width: 250px;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.contact-info {
+.wanita h1 {
+  font-size: 24px;
+  font-weight: bold;
   margin-bottom: 20px;
 }
 
-.contact-info p {
-  display: flex;
-  align-items: center;
+.sidebar {
+  float: left;
+  width: 20%;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.sidebar h3 {
+  font-size: 18px;
   margin-bottom: 10px;
-  font-size: 1rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
 }
 
-.contact-info img {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-  filter: invert(1);
+.sidebar ul {
+  list-style: none;
 }
 
-.contact-info a {
-  color: #fff;
+.sidebar li {
+  margin: 10px 0;
+}
+
+.sidebar a {
   text-decoration: none;
+  color: #333;
+  font-size: 14px;
   transition: color 0.3s ease;
 }
 
-.contact-info a:hover {
-  color: #f39c12;
+.sidebar a:hover {
+  color: #ff0000;
 }
 
-.social-icons {
+/* Box produk */
+.product-box {
+  margin-left: 22%; /* Geser ke kanan, sesuai ukuran sidebar */
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  overflow: hidden; /* Pastikan elemen tetap rapi */
+}
+
+/* Grid produk */
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Kolom responsif */
+  gap: 20px; /* Jarak antar elemen */
+}
+
+.product {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.product img {
+  max-width: 100%;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.product h4 {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.product p {
+  font-size: 14px;
+  color: #666;
+  margin: 5px 0;
+}
+
+.product .rating {
+  color: #ffa500;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    float: none;
+    margin-bottom: 20px;
+  }
+
+  .product-box {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-list {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+.footer {
+  position: relative;
+  width: 100%;
+}
+
+.footer-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.content {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.payment {
+  margin-bottom: 30px;
+}
+
+.payment p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.payment-images {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.payment-images img {
+  height: 30px;
+  object-fit: contain;
+}
+
+.contact {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.phone, .location {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #333;
+}
+
+.phone i, .location i {
+  font-size: 18px;
+}
+
+.brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px;
+}
+
+.social {
   display: flex;
   gap: 15px;
 }
 
-.social-icons a {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.social a {
+  color: #333;
+  font-size: 20px;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-.social-icons img {
+.social a:hover {
+  color: #000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact {
+      flex-direction: column;
+      gap: 15px;
+  }
+
+  .brand {
+      flex-direction: column;
+      gap: 20px;
+  }
+
+  .payment-images {
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+
+  .social {
+      margin-top: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+      padding: 20px;
+  }
+
+  .payment-images img {
+      height: 25px;
+  }
+
+  .contact {
+      text-align: center;
+  }
+
+  .phone, .location {
+      justify-content: center;
+  }
+}
+
+/* Chat */
+/* Chat Container */
+.chat-container {
   width: 100%;
+  max-width: 1200px;
   height: 100%;
-  object-fit: cover;
+  max-height: 1200px;
+  margin: 4px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border: 3px solid n;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-.social-icons a:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+/* Chat Header */
+.chat-header {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #F8F8F8;
+  border: 1px solid #000;
+  color: rgb(0, 0, 0);
+  font-size: 22px;
+  font-weight: bold;
 }
+
+.chat-header img {
+  width: 35px;
+  height: 35px;
+  margin-right: 15px;
+  border-radius: 30px;
+  background-color: #ff4d4d;
+}
+
+/* Chat Body */
+.chat-body {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  background-color: #F8F8F8;
+}
+
+.message {
+  max-width: 70%;
+  padding: 15px 20px;
+  border-radius: 20px;
+  font-size: 18px;
+  display: inline-block;
+  text-align: center;
+}
+
+/* Received Messages */
+.message.received {
+  align-self: flex-start;
+  background-color: #E9E9E9;
+  color: #333;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Sent Messages */
+.message.sent {
+  align-self: flex-end;
+  background-color: #E74C3C;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Chat Footer */
+.chat-footer {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  border-top: 1px solid #ddd;
+  background-color: #F9F9F9;
+}
+
+.chat-footer input[type="text"] {
+  flex: 1;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  outline: none;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.chat-footer button {
+  background-color: #0078FF;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-footer button:hover {
+  background-color: #005BB5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .chat-container {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+  }
+
+  .chat-header {
+    font-size: 18px;
+    padding: 10px 15px;
+  }
+
+  .chat-footer input[type="text"] {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .chat-footer button {
+    font-size: 16px;
+    padding: 10px 15px;
+  }
+
+  .message {
+    font-size: 16px;
+    padding: 10px 15px;
+  }
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {

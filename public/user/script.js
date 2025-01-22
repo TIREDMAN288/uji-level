@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentSlideIndex = 0;
 const slides = [
   "asset -ujilevel/header.jpeg", 
-  "{{asset('image/asset -ujilevel/header1.png')}}", 
+  "{{ asset('image/asset -ujilevel/header1.png') }}", 
   "asset -ujilevel/header.jpeg"  
 ];
 
