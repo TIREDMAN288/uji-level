@@ -1104,128 +1104,116 @@ h5{
 }
 .footer {
   position: relative;
-  width: 100%;
-}
-
-.footer-bg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-}
-
-.content {
-  position: relative;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  background: rgba(255, 255, 255, 0.9);
-}
-
-.payment {
-  margin-bottom: 30px;
-}
-
-.payment p {
-  font-size: 16px;
-  color: #333;
-  margin-bottom: 15px;
-}
-
-.payment-images {
-  display: flex;
-  gap: 20px;
-  align-items: center;
-}
-
-.payment-images img {
-  height: 30px;
-  object-fit: contain;
-}
-
-.contact {
-  display: flex;
-  gap: 30px;
-  margin-bottom: 30px;
-}
-
-.phone, .location {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: #333;
-}
-
-.phone i, .location i {
-  font-size: 18px;
-}
-
-.brand {
+  background-color: #ffffff;
+  border: 3px solid #38a3eb;
+  padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  font-family: Arial, sans-serif;
 }
 
-.logo img {
+/* Gaya untuk latar belakang footer */
+.footer-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.2;
+  z-index: -1;
+}
+
+.footer .content {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Gaya untuk metode pembayaran */
+.footer .payment {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer .payment p {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer .payment-images {
+  display: flex;
+  gap: 10px;
+}
+
+.footer .payment-images img {
   height: 40px;
 }
 
-.social {
+/* Gaya untuk kontak */
+.footer .contact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 18px;
+}
+
+.footer .contact i {
+  margin-right: 8px;
+  color: #000;
+}
+
+.footer .phone,
+.footer .location {
+  display: flex;
+  align-items: center;
+}
+
+/* Gaya untuk bagian brand/logo */
+.footer .brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer .logo img {
+  width: 100px;
+}
+
+.footer .social {
+  margin-top: 10px;
   display: flex;
   gap: 15px;
 }
 
-.social a {
-  color: #333;
-  font-size: 20px;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.social a:hover {
+.footer .social a {
   color: #000;
+  font-size: 24px;
+  transition: color 0.3s;
 }
 
-/* Responsive Design */
+.footer .social a:hover {
+  color: #38a3eb;
+}
+
+/* Responsif untuk layar kecil */
 @media (max-width: 768px) {
-  .contact {
+  .footer .content {
       flex-direction: column;
-      gap: 15px;
-  }
-
-  .brand {
-      flex-direction: column;
-      gap: 20px;
-  }
-
-  .payment-images {
-      flex-wrap: wrap;
-      justify-content: center;
-  }
-
-  .social {
-      margin-top: 15px;
-  }
-}
-
-@media (max-width: 480px) {
-  .content {
-      padding: 20px;
-  }
-
-  .payment-images img {
-      height: 25px;
-  }
-
-  .contact {
+      align-items: center;
       text-align: center;
   }
 
-  .phone, .location {
-      justify-content: center;
+  .footer .payment,
+  .footer .contact,
+  .footer .brand {
+      margin-bottom: 20px;
   }
 }
 
