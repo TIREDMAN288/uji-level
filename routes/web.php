@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\admin\TambahProdukController;
 use App\Http\Controllers\SepatuController;
+use App\Models\HistoriSepatu;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -47,3 +49,4 @@ Route::prefix('admin')->group(function () {
 });
 
 Route::resource('sepatu', SepatuController::class);
+Route::get('/sepatu/histori/{id}', [SepatuController::class, 'histori'])->name('sepatu.histori');

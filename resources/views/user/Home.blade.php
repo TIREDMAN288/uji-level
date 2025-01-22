@@ -64,7 +64,7 @@
                     <a href="#">Link 3</a>
                 </div>
             </div>
-            <a href="#">Chat Whit Admin</a>
+            <a href="#">Chat With Admin</a>
             <a href="produk.html">Pesanan</a>
             <a href="produk.html">Riwayat Pesanan</a>
         </nav>

@@ -21,7 +21,7 @@
     <div class="container">
         <h1 class="mb-4">Tambah Produk</h1>
 
-        <!-- Form Tambah Produk -->
+       
         <form action="{{ route('tambahproduk.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
