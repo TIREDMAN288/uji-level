@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Admin\TambahProdukController;
+use App\Http\Controllers\admin\TambahProdukController;
+use App\Http\Controllers\SepatuController;
+use App\Http\Controllers\BelanjaController;
+
 
 // Route untuk halaman utama
 Route::get('/', function () {
@@ -63,3 +65,8 @@ require __DIR__.'/auth.php';
 Route::get('admin/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'admin']);
 
 Route::resource('admin/tambahproduk', TambahProdukController::class)->middleware(['auth', 'admin']);
+
+Route::resource('sepatu', SepatuController::class);
+Route::get('/sepatu/histori/{id}', [SepatuController::class, 'histori'])->name('sepatu.histori');
+
+Route::get('/belanja', [BelanjaController::class, 'showList'])->name('belanja.list');
