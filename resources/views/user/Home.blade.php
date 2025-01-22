@@ -162,32 +162,41 @@
 
 
 
-        <footer class="footer">
-            <div class="footer-content">
-                <div class="footer-left">
-                    <h1>Street Straiders</h1>
-                    <img src="{{asset('image/asset -ujilevel/sepatuwomen.jpeg')}}" alt="">
-                </div>
-                <div class="footer-right">
-                    <div class="contact-info">
-                        <p>
-                            <img src="phone-icon.png" alt="phone">
-                            <a href="tel:+62896-9341-9642">+62896-9341-9642</a>
-                        </p>
-                        <p>
-                            <img src="location-icon.png" alt="location">
-                            <a href="#">Jl. Rinda Desa Bojong Menteng Rw05/Rw01</a>
-                        </p>
-                    </div>
-                    <div class="social-icons">
-                        <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
-                        <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
-                        <a href="#"><img src="youtube-icon.png" alt="YouTube"></a>
-                        <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
-                    </div>
+        <footer>
+    <div class="footer">
+        <img src="{{asset('image/asset-ujilevel/footer.png')}}" alt="" class="footer-bg">
+        <div class="content">
+            <div class="payment">
+                <p>Mode Pembayaran:</p>
+                <div class="payment-images">
+                    <img src="{{asset('image/asset-ujilevel/alfamart.png')}}" alt="Alfamart">
+                    <img src="{{asset('image/asset-ujilevel/bni.png')}}" alt="BNI">
+                    <img src="{{asset('image/asset-ujilevel/bca.png')}}" alt="BCA">
+                    <img src="{{asset('image/asset-ujilevel/dana.png')}}" alt="DANA">
                 </div>
             </div>
-        </footer>
+            <div class="contact">
+                <div class="phone">
+                    <i class="fas fa-phone"></i>
+                    <span>+62 895 1631 7682</span>
+                </div>
+                <div class="location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Lokasi sini</span>
+                </div>
+            </div>
+            <div class="brand">
+                <div class="logo">
+                    <img src="{{asset('image/asset-ujilevel/logo.png')}}" alt="Street Straiders Logo">
+                </div>
+                <div class="social">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
 
         <script src="{{asset('user/script.js')}}"></script>
     </body>

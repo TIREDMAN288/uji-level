@@ -1103,108 +1103,130 @@ h5{
   }
 }
 .footer {
-  background-color: #222;
-  color: #fff;
-  padding: 20px 15px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
+  position: relative;
+  width: 100%;
 }
 
-.footer-content {
+.footer-bg {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.content {
+  position: relative;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 40px 20px;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.payment {
+  margin-bottom: 30px;
+}
+
+.payment p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.payment-images {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
+  gap: 20px;
+  align-items: center;
 }
 
-.footer-left {
-  flex: 1;
-  min-width: 250px;
-  margin-bottom: 20px;
+.payment-images img {
+  height: 30px;
+  object-fit: contain;
 }
 
-.footer-left h1 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-.footer-left img {
-  width: 100%;
-  max-width: 150px;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
-}
-
-.footer-left img:hover {
-  transform: scale(1.1);
-}
-
-.footer-right {
-  flex: 2;
-  min-width: 250px;
+.contact {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 30px;
 }
 
-.contact-info {
-  margin-bottom: 20px;
-}
-
-.contact-info p {
+.phone, .location {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
-  font-size: 1rem;
+  gap: 10px;
+  color: #333;
 }
 
-.contact-info img {
-  width: 20px;
-  height: 20px;
-  margin-right: 10px;
-  filter: invert(1);
+.phone i, .location i {
+  font-size: 18px;
 }
 
-.contact-info a {
-  color: #fff;
-  text-decoration: none;
-  transition: color 0.3s ease;
+.brand {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.contact-info a:hover {
-  color: #f39c12;
+.logo img {
+  height: 40px;
 }
 
-.social-icons {
+.social {
   display: flex;
   gap: 15px;
 }
 
-.social-icons a {
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+.social a {
+  color: #333;
+  font-size: 20px;
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
-.social-icons img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.social a:hover {
+  color: #000;
 }
 
-.social-icons a:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+/* Responsive Design */
+@media (max-width: 768px) {
+  .contact {
+      flex-direction: column;
+      gap: 15px;
+  }
+
+  .brand {
+      flex-direction: column;
+      gap: 20px;
+  }
+
+  .payment-images {
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+
+  .social {
+      margin-top: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+      padding: 20px;
+  }
+
+  .payment-images img {
+      height: 25px;
+  }
+
+  .contact {
+      text-align: center;
+  }
+
+  .phone, .location {
+      justify-content: center;
+  }
 }
 
 /* Chat */

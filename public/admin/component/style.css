@@ -1,164 +1,237 @@
-/* Global Styles */
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    display: flex;
-    height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+  display: flex;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.dashboard {
+  display: flex;
+  width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: #e74c3c;
+  width: 250px;
+  height: 100vh;
+  color: white;
+  position: fixed;
+  overflow-y: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar.closed {
+  transform: translateX(-250px);
+}
+
+.sidebar-header {
+  padding: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.sidebar-menu {
+  padding: 20px;
+}
+
+.sidebar-menu p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.sidebar-menu ul {
+  list-style: none;
+}
+
+.sidebar-menu ul li {
+  margin: 15px 0;
+}
+
+.sidebar-menu ul li a {
+  text-decoration: none;
+  color: white;
+  display: inline-block;
+  font-size: 1rem;
+  padding: 10px 15px;
+  position: relative;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Efek hover garis bawah yang menyesuaikan ukuran navbar */
+.sidebar-menu ul li a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0;
+  height: 3px;
+  background: white;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(-50%);
+}
+
+.sidebar-menu ul li a:hover::after {
+  width: 100%;
+}
+
+.sidebar-menu ul li a:hover {
+  color: #ffddcc;
+  transform: scale(1.05);
+}
+
+.logout {
+  margin-top: 20px;
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+.logout form {
+  display: inline;
+}
+
+.logout a {
+  color: #ffe6e6;
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: 10px 20px;
+  display: inline-block;
+  border: 2px solid white;
+  border-radius: 5px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.logout a:hover {
+  background: white;
+  color: #e74c3c;
+}
+
+
+/* Main Content */
+.main-content {
+  margin-left: 250px;
+  width: calc(100% - 250px);
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.main-content.full {
+  margin-left: 0;
+  width: 100%;
+}
+
+.navbar {
+  background-color: #e74c3c;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.navbar-actions {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-actions i {
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.content {
+  padding: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #dcdcdc;
+  height: 120px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+  margin-top: 20px;
+  text-align: center;
+  color: #333;
+}
+
+/* Hamburger Menu */
+.navbar-toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 1.8rem;
+  color: white;
+  margin-right: 20px;
+}
+
+@media (max-width: 768px) {
+  .navbar-toggle {
+    display: block;
   }
-  
-  .dashboard {
-    display: flex;
+
+  .sidebar {
+    transform: translateX(-250px);
+  }
+
+  .sidebar.closed {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0;
     width: 100%;
   }
-  
-  /* Sidebar */
-  .sidebar {
-    width: 250px;
-    background-color: #e74c3c;
-    color: white;
-    display: flex;
+
+  .navbar-menu ul {
+    display: none;
     flex-direction: column;
-    padding: 20px;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .sidebar:hover {
-    width: 280px;
-  }
-  
-  .sidebar-header {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .sidebar-menu p {
-    font-weight: bold;
-    margin: 10px 0;
-  }
-  
-  .sidebar-menu ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .sidebar-menu ul li {
-    margin: 10px 0;
-  }
-  
-  .sidebar-menu ul li a {
-    text-decoration: none;
-    color: white;
-    display: flex;
-    align-items: center;
-    padding: 10px;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background: #e74c3c;
+    width: 200px;
     border-radius: 5px;
-    transition: background-color 0.3s, transform 0.2s;
   }
-  
-  .sidebar-menu ul li a:hover {
-    background-color: #c0392b;
-    transform: translateX(10px);
-  }
-  
-  .sidebar-menu ul li a i {
-    margin-right: 10px;
-  }
-  
-  .logout {
-    margin-top: auto;
-  }
-  
-  /* Main Content */
-  .main-content {
-    flex: 1;
+
+  .navbar-menu ul.active {
     display: flex;
-    flex-direction: column;
   }
-  
-  /* Navbar */
-  .navbar {
-    background-color: #e74c3c;
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  
-  .navbar-brand {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    transition: transform 0.3s;
-  }
-  
-  .navbar-brand:hover {
-    transform: scale(1.1);
-  }
-  
-  .navbar-brand .logo {
-    height: 30px;
-    margin-right: 10px;
-  }
-  
-  .navbar-actions {
-    display: flex;
-    align-items: center;
-  }
-  
-  .navbar-actions i {
-    margin: 0 10px;
-    cursor: pointer;
-    transition: color 0.3s;
-  }
-  
-  .navbar-actions i:hover {
-    color: #c0392b;
-  }
-  
-  .user-menu {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .user-menu:hover i {
-    transform: rotate(180deg);
-    transition: transform 0.3s;
-  }
-  
-  /* Content */
-  .content {
-    padding: 20px;
+
+  .navbar-menu ul li {
+    margin: 10px 0;
     text-align: center;
   }
-  
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  
-  .card {
-    background-color: #ddd;
-    height: 100px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  }
-  
-  footer {
-    margin-top: 20px;
-    font-weight: bold;
-  }
-  
+}

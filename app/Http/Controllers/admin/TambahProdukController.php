@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\TambahProduk;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class TambahProdukController extends Controller
 {
-    // Menampilkan semua data produk
+    // Menampilkan daftar produk
     public function index()
     {
-        $produk = TambahProduk::all();
-        return view('admin.tambahproduk.index', compact('produk'));
+        $produks = TambahProduk::all();
+        return view('admin.tambahproduk.index', compact('produks'));
     }
 
     // Menampilkan form untuk menambahkan produk baru
@@ -21,73 +21,71 @@ class TambahProdukController extends Controller
         return view('admin.tambahproduk.create');
     }
 
-    // Menyimpan produk baru ke database
+    // Menyimpan data produk baru ke database
     public function store(Request $request)
     {
-        $request->validate([
-            'foto' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        $validatedData = $request->validate([
+            'foto' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             'judul' => 'required|string|max:255',
             'harga' => 'required|numeric',
-            'warna' => 'required|string|max:50',
-            'rating' => 'required|numeric|between:0,5',
+            'warna' => 'required|string|max:100',
+            'rating' => 'required|numeric|min:1|max:5'
         ]);
 
-        // Simpan file foto
-        $fotoPath = $request->file('foto')->store('public/foto_produk');
+        $fotoPath = $request->file('foto')->store('uploads', 'public');
 
         TambahProduk::create([
             'foto' => $fotoPath,
-            'judul' => $request->judul,
-            'harga' => $request->harga,
-            'warna' => $request->warna,
-            'rating' => $request->rating,
+            'judul' => $validatedData['judul'],
+            'harga' => $validatedData['harga'],
+            'warna' => $validatedData['warna'],
+            'rating' => $validatedData['rating'],
         ]);
 
-        return redirect()->route('tambahproduk.index')->with('success', 'Produk berhasil ditambahkan.');
+        return redirect(route('admin.tambahproduk.index'))->with('success', 'Produk berhasil ditambahkan');
     }
 
-    // Menampilkan detail produk untuk diedit
+    // Menampilkan detail produk
+    public function show($id)
+    {
+        $produk = TambahProduk::findOrFail($id);
+        return view('admin.tambahproduk.show', compact('produk'));
+    }
+
+    // Menampilkan form untuk edit produk
     public function edit($id)
     {
         $produk = TambahProduk::findOrFail($id);
         return view('admin.tambahproduk.edit', compact('produk'));
     }
 
-    // Mengupdate data produk di database
+    // Memperbarui data produk di database
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            'judul' => 'required|string|max:255',
-            'harga' => 'required|numeric',
-            'warna' => 'required|string|max:50',
-            'rating' => 'required|numeric|between:0,5',
-        ]);
-
         $produk = TambahProduk::findOrFail($id);
 
-        // Update foto jika ada
+        $validatedData = $request->validate([
+            'judul' => 'required|string|max:255',
+            'harga' => 'required|numeric',
+            'warna' => 'required|string|max:100',
+            'rating' => 'required|numeric|min:1|max:5'
+        ]);
+
         if ($request->hasFile('foto')) {
-            $fotoPath = $request->file('foto')->store('public/foto_produk');
+            $fotoPath = $request->file('foto')->store('uploads', 'public');
             $produk->foto = $fotoPath;
         }
 
-        $produk->update([
-            'judul' => $request->judul,
-            'harga' => $request->harga,
-            'warna' => $request->warna,
-            'rating' => $request->rating,
-        ]);
+        $produk->update($validatedData);
 
-        return redirect()->route('tambahproduk.index')->with('success', 'Produk berhasil diperbarui.');
+        return redirect(route('admin.tambahproduk.index'))->with('success', 'Produk berhasil diperbarui');
     }
 
-    // Menghapus produk
+    // Menghapus produk dari database
     public function destroy($id)
     {
         $produk = TambahProduk::findOrFail($id);
         $produk->delete();
-
-        return redirect()->route('tambahproduk.index')->with('success', 'Produk berhasil dihapus.');
+        return redirect(route('admin.tambahproduk.index'))->with('success', 'Produk berhasil dihapus');
     }
 }

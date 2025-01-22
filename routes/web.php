@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\TambahProdukController;
 
 // Route untuk halaman utama
 Route::get('/', function () {
@@ -61,3 +62,4 @@ require __DIR__.'/auth.php';
 // Route untuk admin dashboard dengan middleware admin
 Route::get('admin/dashboard', [HomeController::class, 'index'])->middleware(['auth', 'admin']);
 
+Route::resource('admin/tambahproduk', TambahProdukController::class)->middleware(['auth', 'admin']);

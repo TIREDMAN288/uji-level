@@ -38,25 +38,25 @@
     </header>
 
     <nav class="navbar">
-        <a href="{{ route ('user.Home')}}">Home</a>
-        <a href="{{ route('user.About') }}">About</a>
-        <div class="dropdown">
-            <button class="dropbtn">
-                Categories
-                <img
-                    src="{{asset('image/asset -ujilevel/logo drow.png')}}"
-                    alt="Dropdown Logo"
-                    class="dropdown-logo" />
-            </button>
-            <div class="dropdown-content">
-                <a href="{{ route('user.kategoriPria') }}">Pria</a>
-                <a href="{{ route('user.kategoriWanita') }}">Wanita</a>
+            <a href="{{ route ('user.Home')}}">Home</a>
+            <a href="{{ route('user.About') }}">About</a>
+            <div class="dropdown">
+                <button class="dropbtn">
+                    Categories
+                    <img
+                        src="{{asset('image/asset -ujilevel/logo drow.png')}}"
+                        alt="Dropdown Logo"
+                        class="dropdown-logo" />
+                </button>
+                <div class="dropdown-content">
+                    <a href="{{ route('user.kategoriPria') }}">Pria</a>
+                    <a href="{{ route('user.kategoriWanita') }}">Wanita</a>
+                </div>
             </div>
-        </div>
-        <a href="#">Chat Whit Admin</a>
-        <a href="produk.html">Pesanan</a>
-        <a href="produk.html">Riwayat Pesanan</a>
-    </nav>
+            <a href="{{ route('user.pesan') }}">Chat Whit Admin</a>
+            <a href="produk.html">Pesanan</a>
+            <a href="produk.html">Riwayat Pesanan</a>
+        </nav>
     <section class="pria">
         <div class="container">
             <h1>Kategori Pria</h1>
