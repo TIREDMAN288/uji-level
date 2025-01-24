@@ -8,7 +8,7 @@
 <body>
     <h1>Edit Produk</h1>
 
-    <form action="{{ route('admin.tambahproduk.update', $produk->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('tambahproduk.update', $produk->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
@@ -31,6 +31,6 @@
     </form>
 
     <br>
-    <a href="{{ route('admin.tambahproduk.index') }}">Kembali ke Daftar Produk</a>
+    <a href="{{ route('tambahproduk.index') }}">Kembali ke Daftar Produk</a>
 </body>
 </html>

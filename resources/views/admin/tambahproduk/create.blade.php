@@ -8,7 +8,7 @@
 <body>
     <h1>Tambah Produk Baru</h1>
 
-    <form action="{{ route('admin.tambahproduk.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('tambahproduk.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="foto">Foto:</label>
         <input type="file" name="foto" id="foto" required><br><br>
@@ -29,6 +29,6 @@
     </form>
 
     <br>
-    <a href="{{ route('admin.tambahproduk.index') }}">Kembali ke Daftar Produk</a>
+    <a href="{{ route('tambahproduk.index') }}">Kembali ke Daftar Produk</a>
 </body>
 </html>

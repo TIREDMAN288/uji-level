@@ -38,25 +38,26 @@
     </header>
 
     <nav class="navbar">
-            <a href="{{ route ('user.Home')}}">Home</a>
-            <a href="{{ route('user.About') }}">About</a>
-            <div class="dropdown">
-                <button class="dropbtn">
-                    Categories
-                    <img
-                        src="{{asset('image/asset -ujilevel/logo drow.png')}}"
-                        alt="Dropdown Logo"
-                        class="dropdown-logo" />
-                </button>
-                <div class="dropdown-content">
-                    <a href="{{ route('user.kategoriPria') }}">Pria</a>
-                    <a href="{{ route('user.kategoriWanita') }}">Wanita</a>
-                </div>
+        <a href="{{ route ('user.Home')}}">Home</a>
+        <a href="{{ route('user.About') }}">About</a>
+        <div class="dropdown">
+            <button class="dropbtn">
+                Categories
+                <img
+                    src="{{asset('image/asset -ujilevel/logo drow.png')}}"
+                    alt="Dropdown Logo"
+                    class="dropdown-logo" />
+            </button>
+            <div class="dropdown-content">
+                <a href="{{ route('user.kategoriPria') }}">Pria</a>
+                <a href="{{ route('user.kategoriWanita') }}">Wanita</a>
             </div>
-            <a href="{{ route('user.pesan') }}">Chat Whit Admin</a>
-            <a href="produk.html">Pesanan</a>
-            <a href="produk.html">Riwayat Pesanan</a>
-        </nav>
+        </div>
+        <a href="{{ route('user.pesan') }}">Chat Whit Admin</a>
+        <a href="produk.html">Pesanan</a>
+        <a href="produk.html">Riwayat Pesanan</a>
+        <a href="produk.html">Back To Dashboard</a>
+    </nav>
     <section class="pria">
         <div class="container">
             <h1>Kategori Pria</h1>
@@ -69,134 +70,19 @@
             </div>
             <div class="product-box">
                 <div class="product-list">
-                    <!-- Contoh produk -->
+                    @foreach($produks as $produk)
                     <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
+                        <img src="{{ asset('storage/' . $produk->foto) }}" alt="{{ $produk->judul }}">
+                        <h4>{{ $produk->judul }}</h4>
+                        <p>Rp {{ number_format($produk->harga, 0, ',', '.') }}</p>
+                        <p>Warna: {{ ucfirst($produk->warna) }}</p>
+                        <div class="rating">
+                            {!! str_repeat('&#9733;', $produk->rating) !!}
+                            {!! str_repeat('&#9734;', 5 - $produk->rating) !!}
+                            <span>({{ $produk->rating }})</span>
+                        </div>
                     </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <!-- Tambahkan produk lainnya -->
+                    @endforeach
                 </div>
             </div>
         </div>

@@ -46,6 +46,11 @@ Route::get('/chat', function () {
     return view('user.pesan');
 })->name('user.pesan');
 
+// Details produk
+Route::get('/detail-produk', function () {
+    return view('user.DetailProduk');
+})->name('user.DetailProduk');
+
 // Route untuk halaman "Home"
 Route::get('/home', function () {
     return view('user.Home');

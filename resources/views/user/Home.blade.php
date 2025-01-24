@@ -38,17 +38,21 @@
                 <a href="#" class="icon" title="Account">
                     <img src="{{asset('image/asset -ujilevel/user.png')}}" alt="Account" />
                 </a>
+                @guest
+                <!-- Tampilan untuk tamu/belum login -->
                 <div class="tombol">
                     <button class="login">Login</button>
                     <div class="vertical-line"></div>
                     <button class="register">Register</button>
                 </div>
+                @endguest
 
             </div>
         </header>
 
+        <!-- resources/views/layouts/navbar.blade.php -->
         <nav class="navbar">
-            <a href="{{ route ('user.Home')}}">Home</a>
+            <a href="{{ route('user.Home') }}">Home</a>
             <a href="{{ route('user.About') }}">About</a>
             <div class="dropdown">
                 <button class="dropbtn">
@@ -63,9 +67,13 @@
                     <a href="{{ route('user.kategoriWanita') }}">Wanita</a>
                 </div>
             </div>
-            <a href="{{ route('user.pesan') }}">Chat Whit Admin</a>
+            <a href="{{ route('user.pesan') }}">Chat With Admin</a>
             <a href="produk.html">Pesanan</a>
             <a href="produk.html">Riwayat Pesanan</a>
+
+            @if(Auth::user() && Auth::user()->usertype == 'admin')
+            <a href="{{ route('admin.dashboard') }}">Back To Dashboard</a>
+            @endif
         </nav>
 
         <main class="main-content">
@@ -117,8 +125,8 @@
             </div>
             <div class="product-grid">
                 <div class="product-card">
-                    <img src="{{asset('image/asset -ujilevel/Streetcheck Shoes.jpeg')}}" alt="Shoe 1">
-                    <p class="product-name">sepatu jalan jalan</p>
+                    <a href="{{ route('user.DetailProduk')}}"><img src="{{asset('image/asset -ujilevel/Streetcheck Shoes.jpeg')}}" alt="Shoe 1"></a>
+                    <p class="product-name"></p>
                     <p class="price">Rp 150.000</p>
                     <p class="product-color">Color white</p>
                     <p class="rating">⭐⭐⭐⭐⭐ (0)</p>

@@ -53,9 +53,10 @@
                     <a href="{{ route('user.kategoriWanita') }}">Wanita</a>
                 </div>
             </div>
-            <a href="#">Chat Whit Admin</a>
+            <a href="{{ route('user.pesan') }}">Chat Whit Admin</a>
             <a href="produk.html">Pesanan</a>
             <a href="produk.html">Riwayat Pesanan</a>
+            <a href="produk.html">Back To Dashboard</a>
         </nav>
     <section class="wanita">
         <div class="container">
