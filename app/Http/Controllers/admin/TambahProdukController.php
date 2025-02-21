@@ -42,7 +42,7 @@ class TambahProdukController extends Controller
             'rating' => $validatedData['rating'],
         ]);
 
-        return redirect(route('admin.tambahproduk.index'))->with('success', 'Produk berhasil ditambahkan');
+        return redirect(route('tambahproduk.index'))->with('success', 'Produk berhasil ditambahkan');
     }
 
     // Menampilkan detail produk
@@ -78,7 +78,7 @@ class TambahProdukController extends Controller
 
         $produk->update($validatedData);
 
-        return redirect(route('admin.tambahproduk.index'))->with('success', 'Produk berhasil diperbarui');
+        return redirect(route('tambahproduk.index'))->with('success', 'Produk berhasil diperbarui');
     }
 
     // Menghapus produk dari database
@@ -86,6 +86,6 @@ class TambahProdukController extends Controller
     {
         $produk = TambahProduk::findOrFail($id);
         $produk->delete();
-        return redirect(route('admin.tambahproduk.index'))->with('success', 'Produk berhasil dihapus');
+        return redirect(route('tambahproduk.index'))->with('success', 'Produk berhasil dihapus');
     }
 }

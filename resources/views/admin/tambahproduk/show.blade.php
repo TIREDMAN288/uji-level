@@ -17,6 +17,6 @@
     <p><strong>Rating:</strong> {{ $produk->rating }}</p>
 
     <br>
-    <a href="{{ route('admin.tambahproduk.index') }}">Kembali ke Daftar Produk</a>
+    <a href="{{ route('tambahproduk.index') }}">Kembali ke Daftar Produk</a>
 </body>
 </html>

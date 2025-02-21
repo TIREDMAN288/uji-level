@@ -24,23 +24,21 @@
         <p>General</p>
         <ul>
           <li><a href="#"><i class="icon-dashboard"></i> Dashboard</a></li>
-          <li><a href="{{ route('user.Home') }}"><i class="icon-dashboard"></i> Dashboard Home</a></li>
+          <li><a href="{{ route('user.home') }}"><i class="icon-dashboard"></i> Dashboard Home</a></li>
           <li><a href="{{ route('tambahproduk.index') }}"><i class="icon-product"></i> Tambah produk</a></li>
-          <li><a href="#"><i class="icon-history"></i> Histori</a></li>
           <li><a href="#"><i class="icon-customer"></i> Pelanggan</a></li>
           <li><a href="#"><i class="icon-staff"></i> Petugas</a></li>
         </ul>
         <ul class="logout">
-          <form method="POST" action="{{ route('logout') }}">
-            @csrf <!-- Token CSRF untuk keamanan -->
-
-            <!-- Link yang akan submit form -->
-            <x-responsive-nav-link :href="route('logout')"
-              onclick="event.preventDefault();
-                     this.closest('form').submit();">
-              {{ __('Log Out') }}
-            </x-responsive-nav-link>
-          </form>
+        <form method="POST" action="{{ route('logout') }}">
+    @csrf
+    <!-- Link yang akan submit form -->
+    <x-responsive-nav-link :href="route('logout')"
+        onclick="event.preventDefault();
+                 this.closest('form').submit();">
+        {{ __('Log Out') }}
+    </x-responsive-nav-link>
+</form>
         </ul>
       </nav>
     </aside>
