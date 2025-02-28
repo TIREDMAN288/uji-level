@@ -22,14 +22,8 @@
 
     .pesanan-container {
         display: grid;
-        grid-template-columns: 1fr;
+        grid-template-columns: 2fr 1fr;
         gap: 2rem;
-    }
-
-    @media (min-width: 992px) {
-        .cart-container {
-            grid-template-columns: 2fr 1fr;
-        }
     }
 
     .pesanan-items {
@@ -45,6 +39,12 @@
         background: white;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .pesanan-item:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     }
 
     .item-checkbox {
@@ -122,6 +122,13 @@
         padding: 1.5rem;
         border-radius: 8px;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        position: sticky;
+        top: 1rem;
+    }
+
+    .pesanan-summary:hover {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     }
 
     .pesanan-title {
@@ -157,6 +164,22 @@
 
     .checkout-btn:hover {
         background: #dc2626;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .pesanan-item,
+    .pesanan-summary {
+        animation: fadeIn 0.5s ease-out;
     }
 </style>
 

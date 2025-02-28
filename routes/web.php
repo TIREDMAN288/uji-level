@@ -9,6 +9,7 @@ use App\Http\Controllers\SepatuController;
 use App\Http\Controllers\Admin\AdminRatingController;
 use App\Http\Controllers\UserHomeController;
 use App\Http\Controllers\MessagesController;
+use App\Http\Controllers\UserProfileController;
 
 // Load route autentikasi bawaan Breeze (otomatis termasuk logout)
 require __DIR__.'/auth.php';
@@ -17,7 +18,10 @@ require __DIR__.'/auth.php';
 Route::get('/', function () {
     return redirect()->route('user.home'); // Langsung arahkan ke halaman Home
 });
-
+// Redirect ke admin dashboard (sudah ada di sini)
+Route::get('/admin', function () {
+    return redirect()->route('admin.dashboard');
+})->name('admin.index');
 
 // Dashboard Admin (dengan middleware auth)
 Route::middleware(['auth'])->group(function () {
@@ -25,10 +29,29 @@ Route::middleware(['auth'])->group(function () {
         return view('admin.dashboard');
     })->name('admin.dashboard');
 
+    // Form tambah produk
+    Route::get('/admin/product/add', [TambahProdukController::class, 'create'])->name('admin.product.add');
+
+    // **Tambahkan route untuk halaman daftar produk (admin.products)**
+    Route::get('/admin/products', [TambahProdukController::class, 'index'])->name('admin.products');
+
     // **Perbaikan error $products** (Dashboard User)
     Route::get('/dashboard/user', [UserHomeController::class, 'index'])->name('user.dashboard');
-
 });
+
+
+
+
+// Dashboard Admin (dengan middleware auth)
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('/admin/dashboard', function () {
+//         return view('admin.dashboard');
+//     })->name('admin.dashboard');
+
+//     // **Perbaikan error $products** (Dashboard User)
+//     Route::get('/dashboard/user', [UserHomeController::class, 'index'])->name('user.dashboard');
+
+// });
 
 // Route untuk halaman "About"
 Route::get('/about', function () {
@@ -64,6 +87,16 @@ Route::get('/detailproduk', function () {
     return view('user.detailproduk');
 })->name('user.detailproduk');
 
+// Route untuk halaman akun
+Route::get('/akun', function () {
+    return view('user.Akun');
+})->name('user.Akun');
+
+
+Route::get('/checkout', function () {
+    return view('user.checkout');
+})->name('user.checkout');
+
 
 // Menampilkan halaman login (GET)
 Route::get('/auth/login', [AuthenticatedSessionController::class, 'create'])->name('login');
@@ -75,6 +108,8 @@ Route::get('/chat/{id?}', [MessagesController::class, 'index'])->name('chat');
 
 // Route untuk halaman home user
 Route::get('/home', [UserHomeController::class, 'index'])->name('user.home');
+
+Route::get('/user/update-profile', [UserProfileController::class, 'updateProfile'])->name('user.updateProfile');
 
 // Route untuk profile user (hanya bisa diakses jika login)
 Route::middleware(['auth'])->group(function () {
@@ -91,4 +126,4 @@ Route::resource('sepatu', SepatuController::class);
 Route::get('/sepatu/histori/{id}', [SepatuController::class, 'histori'])->name('sepatu.histori');
 
 // Route untuk admin coupons
-Route::get('/admin/coupons', [HomeController::class, 'coupons'])->name('admin.coupons');
+// Route::get('/admin/coupons', [HomeController::class, 'coupons'])->name('admin.coupons');

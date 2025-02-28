@@ -32,8 +32,8 @@
                 <a href="{{ route('login') }}" class="register-btn">Register</a>
                 @else
                 <!-- Jika user sudah login, tampilkan ikon akun -->
-                <a href="#" class="icon" title="Account">
-                <img src="{{asset('image/asset -ujilevel/user.png')}}" alt="Account" />
+                <a href="{{ route('user.Akun') }}" class="icon" title="Account">
+                    <img src="{{asset('image/asset -ujilevel/user.png')}}" alt="Account" />
                 </a>
                 @endguest
             </div>
@@ -112,11 +112,13 @@
             @foreach ($products as $product)
 
             <div class="product-card">
-                <img src="{{ asset('storage/' . $product->foto) }}" alt="{{ $product->judul }}" class="img-fluid" style="height: 200px; object-fit: cover;">
-                <p class="product-name">{{ $product->judul }}</p>
-                <p class="price">Rp {{ number_format($product->harga, 0, ',', '.') }}</p>
-                <p class="product-color">Warna: {{ $product->warna }}</p>
-                <p class="rating">⭐ {{ $product->rating }} / 5</p>
+                <a href="{{ route('user.detailproduk', $product->id) }}" style="text-decoration: none; color: inherit;">
+                    <img src="{{ asset('storage/' . $product->foto) }}" alt="{{ $product->judul }}" class="img-fluid" style="height: 200px; object-fit: cover;">
+                    <p class="product-name">{{ $product->judul }}</p>
+                    <p class="price">Rp {{ number_format($product->harga, 0, ',', '.') }}</p>
+                    <p class="product-color">Warna: {{ $product->warna }}</p>
+                    <p class="rating">⭐ {{ $product->rating }} / 5</p>
+                </a>
             </div>
             @endforeach
         </div>
@@ -153,12 +155,3 @@
 
 </html>
 
-<form method="POST" action="{{ route('logout') }}">
-    @csrf
-    <!-- Link yang akan submit form -->
-    <x-responsive-nav-link :href="route('logout')"
-        onclick="event.preventDefault();
-                 this.closest('form').submit();">
-        {{ __('Log Out') }}
-    </x-responsive-nav-link>
-</form>

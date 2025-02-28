@@ -1,561 +1,801 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="id">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Street Striders</title>
-    <link rel="stylesheet" href="{{asset('user/style.css')}}" />
-</head>
-<style>
-    /* Reset & Global Styles */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Montserrat', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEPATU SEKOLAH,JALAN - JALAN</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        }
+        
+        .header {
+            position: relative;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+        }
+        
+        .back-button {
+            background-color: #ff4d4d;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover {
+            background-color: #ff3333;
+            transform: scale(1.05);
+        }
 
-    body {
-        background-color: #f5f5f5;
-        justify-content: center;
-        align-items: center;
-    }
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .product-left {
+            flex: 0 0 45%;
+            padding: 20px;
+        }
+        
+        .product-right {
+            flex: 0 0 55%;
+            padding: 20px;
+        }
+        
+        .product-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s ease;
+        }
+        
+        .product-image:hover {
+            transform: scale(1.03) translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .product-info {
+            padding: 20px 0;
+        }
+        
+        .product-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .rating {
+            color: #ffc107;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .price {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #ff4d4d;
+        }
+        
+        .product-options-container {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .size-options {
+            flex: 0 0 45%;
+            padding: 15px;
+            background: #fff;
+        }
+        
+        .size-button {
+            padding: 8px 15px;
+            border: 1px solid #ddd;
+            background: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .size-button:hover {
+            background-color: #f0f0f0;
+            border-color: #ccc;
+            transform: translateY(-2px);
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
 
-    /* Container Utama */
-    .product-container { 
-        max-width: 1100px;
-        background: #fff;
-        padding: 20px;
-        margin: 20px;
-        border-radius: 10px;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-    }
+        .size-button:active {
+            transform: translateY(0);
+        }
+        
+        .quantity-checkout-container {
+            flex: 0 0 45%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+        }
+        
+        .quantity-section {
+            margin-bottom: 15px;
+        }
+        
+        .quantity-text {
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #555;
+        }
+        
+        .quantity-controls {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .quantity-button {
+            width: 40px;
+            height: 35px;
+            background: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quantity-button:hover {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            transform: translateY(-2px);
+        }
 
-    /* Layout Produk */
-    .product-layout {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 30px;
-        margin-bottom: 30px;
-    }
+        .quantity-button:hover::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+            top: 0;
+            left: 0;
+        }
+        
+        .quantity-value {
+            padding: 0 15px;
+            font-size: 16px;
+        }
+        
+        .quantity-stock {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .add-to-cart-button,
+        .checkout-button {
+            width: 100%;
+            margin-top: 10px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .specifications {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .section-title {
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: #333;
+        }
+        
+        .description {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #555;
+        }
 
-    /* Gambar Produk */
-    .product-images .main-image img {
-        width: 100%;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
+        .description p {
+            transition: all 0.3s ease;
+            padding: 5px;
+            border-radius: 5px;
+        }
 
-    /* Spesifikasi berada di bawah gambar */
-    .specifications {
-        background: #fafafa;
-        padding: 20px;
-        margin-top: 15px;
-        border-radius: 8px;
-        border: 1px solid #ddd;
-        font-size: 14px;
-    }
+        .description p:hover {
+            background-color: #f8f8f8;
+            transform: translateX(10px);
+            padding-left: 15px;
+        }
+        
+        .care-instructions {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            background-color: #fafafa;
+            border-radius: 8px;
+            margin: 20px;
+        }
+        
+        .care-list {
+            list-style-type: decimal;
+            margin-left: 25px;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #555;
+        }
+        
+        .care-list li {
+            margin-bottom: 10px;
+        }
+        
+        .additional-info {
+            padding: 20px;
+            font-size: 15px;
+            line-height: 1.6;
+            border-bottom: 1px solid #eee;
+            color: #555;
+        }
+        
+        .payment-methods {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .payment-options {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .payment-logo {
+            height: 40px;
+            width: auto;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .payment-logo:hover {
+            transform: translateY(-5px) scale(1.05);
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.2));
+        }
+        
+        .shipping-info {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            margin: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .shipping-info:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            background: linear-gradient(145deg, #ffffff, #f9f9f9);
+        }
+        
+        .shipping-icon {
+            font-size: 24px;
+            margin-right: 15px;
+        }
+        
+        .shipping-text {
+            flex: 1;
+            font-size: 15px;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #eee;
+            background-color: #f9f9f9;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tab:hover {
+            background-color: #f0f0f0;
+        }
 
-    .specifications h3 {
-        margin-bottom: 12px;
-        color: #333;
-        font-size: 18px;
-    }
+        .tab::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: #ff4d4d;
+            transition: all 0.3s ease-in-out;
+            transform: translateX(-50%);
+        }
 
-    .specifications ul {
-        padding-left: 18px;
-    }
-
-    .specifications .disclaimer {
-        margin-top: 12px;
-        padding: 12px;
-        background: #fff3cd;
-        border-radius: 6px;
-        font-size: 13px;
-    }
-
-    /* Informasi Produk */
-    .product-info h1 {
-        font-size: 24px;
-        margin-bottom: 10px;
-        color: #333;
-    }
-
-    .rating {
-        color: gold;
-        font-size: 16px;
-        margin-bottom: 12px;
-    }
-
-    .price {
-        font-size: 26px;
-        font-weight: bold;
-        color: #ff5722;
-        margin: 15px 0;
-    }
-
-    /* Pemilihan Ukuran */
-    .size-selection {
-        margin-top: 15px;
-    }
-
-    .size-row {
-        display: flex;
-        gap: 10px;
-        margin-bottom: 10px;
-    }
-
-    .size-btn {
-        padding: 10px 15px;
-        border-radius: 6px;
-        background: #e0e0e0;
-        font-weight: bold;
-        cursor: pointer;
-        transition: 0.3s ease;
-    }
-
-    .size-btn:hover {
-        background: #512da8;
-        color: #fff;
-    }
-
-    /* Tombol Aksi */
-    .action-buttons {
-        display: flex;
-        gap: 15px;
-        margin-top: 20px;
-    }
-
-    .chat-btn,
-    .checkout-btn {
-        flex: 1;
-        padding: 12px;
-        border: none;
-        border-radius: 6px;
-        font-size: 16px;
-        font-weight: 600;
-        transition: 0.3s ease;
-        cursor: pointer;
-    }
-
-    .chat-btn {
-        background: #fff;
-        border: 2px solid #512da8;
-        color: #512da8;
-    }
-
-    .chat-btn:hover {
-        background: #512da8;
-        color: white;
-    }
-
-    .checkout-btn {
-        background: #512da8;
-        color: white;
-    }
-
-    .checkout-btn:hover {
-        background: #421b8a;
-    }
-
-    /* Metode Pembayaran */
-    .payment-section {
-        margin-top: 30px;
-        padding: 20px;
-        background: #fafafa;
-        border-radius: 8px;
-        border: 1px solid #ddd;
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .payment-section h3 {
-        text-align: center;
-        font-size: 20px;
-        margin-bottom: 15px;
-        color: #333;
-    }
-
-    /* Atur metode pembayaran ke bawah */
-    .payment-methods {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        align-items: center;
-    }
-
-    .payment-option {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        background: white;
-        padding: 12px 20px;
-        border-radius: 6px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        border: 1px solid #ddd;
-        width: 80%;
-        text-align: center;
-    }
-
-    .payment-option img {
-        height: 30px;
-    }
-
-    .payment-option span {
-        font-size: 16px;
-        font-weight: bold;
-    }
-
-    /* Info Pengiriman */
-    .shipping-info {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        margin-top: 15px;
-        padding: 12px;
-        background: #f9f9f9;
-        border-radius: 6px;
-        text-align: center;
-        justify-content: center;
-        font-size: 14px;
-        font-weight: bold;
-    }
-
-    .shipping-info img {
-        height: 25px;
-    }
-
-    /* Ulasan Pelanggan */
-    .reviews-section {
-        margin-top: 40px;
-        padding: 20px;
-        background: #fff;
-        border-radius: 8px;
-        border: 1px solid #ddd;
-        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .reviews-section h3 {
-        text-align: center;
-        font-size: 22px;
-        margin-bottom: 15px;
-        color: #333;
-    }
-
-    /* Kotak Ulasan */
-    .review-box {
-        display: flex;
-        align-items: flex-start;
-        gap: 15px;
-        padding: 15px;
-        border-radius: 8px;
-        border: 1px solid #ddd;
-        background: #f9f9f9;
-        margin-bottom: 15px;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    }
-
-    .reviewer {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-    }
-
-    .reviewer img {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        border: 2px solid #ddd;
-    }
-
-    .reviewer-info {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .reviewer-name {
-        font-size: 16px;
-        font-weight: bold;
-        color: #333;
-    }
-
-    .review-rating {
-        font-size: 14px;
-        color: gold;
-    }
-
-    .review-text {
-        font-size: 14px;
-        color: #333;
-    }
-
-    /* Responsif */
-    @media (max-width: 768px) {
-        .payment-option {
+        .tab:hover::after {
             width: 100%;
         }
-
-        .review-box {
-            flex-direction: column;
-            align-items: flex-start;
+        
+        .tab.active {
+            border-bottom: 3px solid #ff4d4d;
+            color: #ff4d4d;
         }
-    }
-
-    /* Produk Terkait */
-    .related-products {
-        margin-top: 40px;
-    }
-
-    .related-products h3 {
-        margin-bottom: 18px;
-        font-size: 20px;
-    }
-
-    .product-grid {
-        display: flex;
-        gap: 15px;
-    }
-
-    .product-card {
-        background: white;
-        padding: 15px;
-        border-radius: 8px;
-        text-align: center;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .product-card img {
-        width: 100%;
-        border-radius: 8px;
-    }
-
-    .product-card h4 {
-        margin-top: 10px;
-        font-size: 16px;
-    }
-
-    /* Responsif */
-    @media (max-width: 1024px) {
-        .product-layout {
-            grid-template-columns: 1fr;
+        
+        .review-section {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
         }
-
-        .action-buttons {
-            flex-direction: column;
+        
+        .review {
+            margin-top: 20px;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
         }
-    }
-</style>
-
+        
+        .review-user {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #eee;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .user-avatar:hover {
+            transform: scale(1.1) rotate(360deg);
+            background-color: #ff4d4d;
+            color: white;
+        }
+        
+        .user-name {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .review-text {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #555;
+        }
+        
+        .review-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .review-image:hover {
+            transform: scale(1.1) rotate(2deg);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        
+        .similar-products {
+            padding: 20px;
+            overflow-x: auto;
+        }
+        
+        .product-slider {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .product-card {
+            width: 200px;
+            flex-shrink: 0;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.15);
+        }
+        
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .product-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .product-card-info {
+            padding: 15px;
+            font-size: 14px;
+            background-color: white;
+        }
+        
+        .product-card-title {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        .product-card-price {
+            font-weight: bold;
+            font-size: 15px;
+            color: #ff4d4d;
+            margin-bottom: 5px;
+        }
+        
+        .product-card-rating {
+            color: #ffc107;
+            font-size: 14px;
+        }
+        
+        .add-to-cart-section {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            max-width: 1200px;
+            background: white;
+            padding: 15px 20px;
+            display: flex;
+            gap: 15px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 100;
+        }
+        
+        .add-to-cart-button {
+            flex: 1;
+            padding: 12px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        
+        .add-to-cart-button:hover {
+            background-color: #ff3333;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(255,77,77,0.4);
+        }
+        
+        .checkout-button {
+            flex: 1;
+            padding: 12px;
+            background-color: white;
+            color: black;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+        }
+        
+        .checkout-button:hover {
+            background-color: #f9f9f9;
+            border-color: #ccc;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 1200px) {
+            .product-container {
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .product-left, .product-right {
+                flex: 0 0 100%;
+            }
+            
+            .add-to-cart-section {
+                max-width: 100%;
+            }
+            
+            .product-options-container {
+                flex-direction: column;
+            }
+            
+            .size-options,
+            .quantity-checkout-container {
+                flex: 0 0 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                max-width: 100%;
+            }
+            
+            .product-title {
+                font-size: 24px;
+            }
+            
+            .price {
+                font-size: 26px;
+            }
+            
+            .product-card {
+                width: 150px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .header {
+                padding: 10px;
+            }
+            
+            .product-left, .product-right {
+                padding: 15px;
+            }
+            
+            .product-title {
+                font-size: 20px;
+            }
+            
+            .price {
+                font-size: 22px;
+            }
+            
+            .size-options {
+                gap: 5px;
+            }
+            
+            .size-button {
+                padding: 5px 10px;
+            }
+            
+            .add-to-cart-section {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .product-card {
+                width: 120px;
+            }
+        }
+    </style>
+</head>
 <body>
-    <header class="header">
-        <div class="logo">
-            <img src="{{ asset('image/asset -ujilevel/logo.png') }}" alt="" />
-            <h3>Street Striders</h3>
+    <div class="container">
+        <div class="header">
+            <button class="back-button">←</button>
         </div>
-        <div class="search-container">
-            <div class="search-bar">
-                <input type="text" placeholder="Search..." />
-                <button class="search-btn">Search</button>
-            </div>
-            <a href="{{ route('user.pesanan')}}" class="Keranjang" title="Keranjang">
-                <img src="{{asset('image/asset -ujilevel/keranjang.png')}}" alt="Keranjang" />
-            </a>
-        </div>
-        <div class="icons">
-            <div class="tombol">
-                @guest
-                <!-- Jika user belum login, tampilkan tombol Login & Register -->
-                <a href="{{ route('login') }}" class="login-btn">Login</a>
-                <div class="vertical-line"></div>
-                <a href="{{ route('login') }}" class="register-btn">Register</a>
-                @else
-                <!-- Jika user sudah login, tampilkan ikon akun -->
-                <a href="#" class="icon" title="Account">
-                    <img src="{{asset('image/asset -ujilevel/user.png')}}" alt="Account" />
-                </a>
-                @endguest
-            </div>
-        </div>
-    </header>
-
-    <nav class="navbar">
-        <a href="{{ route('user.home') }}">Home</a>
-        <a href="{{ route('user.about') }}">About</a>
-        <div class="dropdown">
-            <button class="dropbtn">
-                Categories
-                <img src="{{asset('image/asset -ujilevel/logo drow.png')}}" alt="Dropdown Logo" class="dropdown-logo" />
-            </button>
-            <div class="dropdown-content">
-                <a href="{{ route('user.kategoriPria') }}">Pria</a>
-                <a href="{{ route('user.kategoriWanita') }}">Wanita</a>
-            </div>
-        </div>
-        <a href="{{ route('user.pesan') }}">Chat Whit Admin</a>
-        <a href="#">Riwayat Pesanan</a>
-        @auth
-        @if (Auth::user()->usertype === 'admin')
-        <a href="{{ route('admin.dashboard') }}">Back to dashboard</a>
-        @endif
-        @endauth
-    </nav>
-    <section>
+        
         <div class="product-container">
-            <div class="product-layout">
-                <!-- Kiri - Gambar Produk -->
-                <div class="product-images">
-                    <div class="main-image">
-                        <img src="sepatu-casual.jpg" alt="SEPATU SANTAI JALAN - JALAN">
-                    </div>
-
-                    <!-- Spesifikasi dipindahkan ke bawah gambar -->
-                    <div class="specifications">
-                        <h3>Spesifikasi</h3>
-                        <ul>
-                            <li>Merk: Local Brand</li>
-                            <li>High quality fabric</li>
-                            <li>Pilihan warna lengkap</li>
-                        </ul>
-
-                        <div class="disclaimer">
-                            <h4>Mohon diperhatikan:</h4>
-                            <ul>
-                                <li>Pilih ukuran yang sesuai dengan ukuran kaki anda</li>
-                                <li>Tanyakan stok terlebih dahulu sebelum order</li>
-                                <li>Pastikan alamat pengiriman sudah benar dan lengkap</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Kanan - Informasi Produk -->
+            <div class="product-left">
+                <img src="https://via.placeholder.com/500x350/333333/ffffff?text=Sepatu+Sekolah" alt="Sepatu Sekolah" class="product-image">
+            </div>
+            
+            <div class="product-right">
                 <div class="product-info">
-                    <div class="product-header">
-                        <h1>SEPATU SANTAI JALAN - JALAN</h1>
-                        <div class="rating">★★★★★ (21)</div>
-                    </div>
-
+                    <h1 class="product-title">SEPATU SEKOLAH,JALAN - JALAN</h1>
+                    <div class="rating">★★★★★ (5)</div>
                     <div class="price">Rp 100.000</div>
-
-                    <div class="size-selection">
-                        <div class="size-row">
-                            <div class="size-btn">38</div>
-                            <div class="size-btn">39</div>
-                            <div class="size-btn">40</div>
+                    
+                    <div class="product-options-container">
+                        <div class="size-options">
+                            <button class="size-button">35</button>
+                            <button class="size-button">36</button>
+                            <button class="size-button">37</button>
+                            <button class="size-button">38</button>
+                            <button class="size-button">39</button>
+                            <button class="size-button">40</button>
+                            <button class="size-button">41</button>
+                            <button class="size-button">42</button>
+                            <button class="size-button">43</button>
+                            <button class="size-button">44</button>
+                            <button class="size-button">45</button>
                         </div>
-                        <div class="size-row">
-                            <div class="size-btn">41</div>
-                            <div class="size-btn">42</div>
-                            <div class="size-btn">43</div>
+                        
+                        <div class="quantity-checkout-container">
+                            <div class="quantity-section">
+                                <div class="quantity-text">Atur jumlah dan catatan</div>
+                                <div class="quantity-controls">
+                                    <button class="quantity-button">-</button>
+                                    <span class="quantity-value">1</span>
+                                    <button class="quantity-button">+</button>
+                                </div>
+                                <div class="quantity-stock">stok: 649</div>
+                            </div>
+                            
+                            <button class="add-to-cart-button">+ Tambahkan ke keranjang</button>
+                            <button class="checkout-button" > <a href="{{ route('user.checkout') }}"></a>CheckOut</button>
                         </div>
-                        <div class="size-row">
-                            <div class="size-btn">44</div>
-                            <div class="size-btn">45</div>
-                        </div>
-                    </div>
-
-                    <!-- Tombol Aksi -->
-                    <div class="action-buttons">
-                        <button class="chat-btn">Chat</button>
-                        <button class="checkout-btn">Checkout</button>
-                    </div>
-
-                    <!-- Metode Pembayaran -->
-                </div>
-            </div>
-            <!-- Metode Pembayaran (Menyamping & di Bawah) -->
-            <div class="payment-section">
-                <h3>Model Pembayaran</h3>
-                <div class="payment-methods">
-                    <div class="payment-option">
-                        <img src="dana-logo.png" alt="DANA">
-                        <span>DANA</span>
-                    </div>
-                    <div class="payment-option">
-                        <img src="bni-logo.png" alt="BNI">
-                        <span>BNI</span>
-                    </div>
-                </div>
-                <div class="shipping-info">
-                    <img src="truck-icon.png" alt="Shipping">
-                    <span>Fast shipping/delivery</span>
-                </div>
-            </div>
-
-            <!-- Ulasan Pelanggan (Dipindahkan ke Bawah) -->
-            <div class="reviews-section">
-                <h3>Ulasan Pelanggan</h3>
-
-                <div class="review-box">
-                    <div class="reviewer">
-                        <img src="user-avatar.jpg" alt="User">
-                        <div class="reviewer-info">
-                            <span class="reviewer-name">John Doe</span>
-                            <div class="review-rating">★★★★★</div>
-                        </div>
-                    </div>
-                    <p class="review-text">Produk sesuai dengan deskripsi, kualitas bagus!</p>
-                </div>
-
-                <div class="review-box">
-                    <div class="reviewer">
-                        <img src="user-avatar2.jpg" alt="User">
-                        <div class="reviewer-info">
-                            <span class="reviewer-name">Jane Smith</span>
-                            <div class="review-rating">★★★★☆</div>
-                        </div>
-                    </div>
-                    <p class="review-text">Barang sesuai gambar, pengiriman cepat.</p>
-                </div>
-            </div>
-
-            <!-- Produk Terkait -->
-            <div class="related-products">
-                <h3>Produk Terkait</h3>
-                <div class="product-grid">
-                    <div class="product-card">
-                        <img src="sepatu1.jpg" alt="Sepatu 1">
-                        <h4>Sepatu Sport</h4>
-                        <div class="rating">★★★★★</div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="logo-container">
-                <img src="{{ asset('image/asset -ujilevel/logo.png') }}" alt="" />
+        
+        <div class="specifications">
+            <div class="section-title">Spesifikasi</div>
+            <div class="description">
+                <p>Beli Ready</p>
+                <p>Bahan Kanvas</p>
+                <p>Pembuatan Metode Sepatu Bersolir</p>
+                <p>Ujung Depan:Ujung Tertutup</p>
             </div>
-            <div class="content">
-                <h2>STREET STRAIDERS</h2>
-                <p class="follow-text">Follow Us</p>
-                <div class="social-icons">
-                    <a href="#"><img src="{{ asset('image/asset -ujilevel/facebook.png') }}" alt="Facebook"></a>
-                    <a href="#"><img src="{{ asset('image/asset -ujilevel/instagram.png') }}" alt="Twitter"></a>
-                    <a href="#"><img src="{{ asset('image/asset -ujilevel/twitter.png') }}" alt="Instagram"></a>
+            
+            <div class="section-title">Kelebihan Produk/Fitur Proses</div>
+            <div class="description">
+                <p>Untuk memudahkan proses penyelesaian atau pembuatan barang kepada kawan, kami meminta agar Anda mencantum Ukuran (size) dan No Hp dalam catatan pembelian. Main Harapkan kawan yang ingin membantu toko untuk tetap menjaga reputasi toko tetap degan baik dan membantu toko yang ada di dalamnya.</p>
+            </div>
+        </div>
+        
+        <div class="care-instructions">
+            <div class="section-title">Catatan penting:</div>
+            <ol class="care-list">
+                <li>Main Harap menungkapkan proses pembelian pakek nomer resi, dan sampai masa barang keluar dari kantoran.</li>
+                <li>Pastikan telah menggunakan fungsi atau kembli barang yang tidak tau dan ketersedianya.</li>
+                <li>Dana tidak mengembalikan kepada kurir dalam waktu 2x jam setelah barang diterima.</li>
+            </ol>
+            
+            <div class="description" style="margin-top:15px;">
+                <p>Terima adasnya kami tidak ingin mengalami keterganguan atau kami tidak dapat memeproses pengembalian atau perpindahan barang.</p>
+            </div>
+            
+            <div class="description">
+                <p>Terima kasih atas pengertian dan kerja sama Anda.</p>
+            </div>
+        </div>
+        
+        <div class="payment-methods">
+            <div class="section-title">Model Pembayaran:</div>
+            <div class="payment-options">
+                <img src="https://via.placeholder.com/100x30/0066cc/ffffff?text=DANA" alt="DANA" class="payment-logo">
+                <img src="https://via.placeholder.com/100x30/e61c28/ffffff?text=BNI" alt="BNI" class="payment-logo">
+            </div>
+        </div>
+        
+        <div class="shipping-info">
+            <div class="shipping-icon">🚚</div>
+            <div class="shipping-text">
+                <strong>GRATIS ONGKIR</strong><br>
+                Buat promo selanjutnya!
+            </div>
+        </div>
+        
+        <div class="tabs">
+            <div class="tab active">Detail</div>
+            <div class="tab">Reviews ★★★★★</div>
+        </div>
+        
+        <div class="review-section">
+            <div class="review">
+                <div class="review-user">
+                    <div class="user-avatar">👤</div>
+                    <div class="user-name">anmzf_</div>
+                </div>
+                <div class="review-text">
+                    <p>Mantap kak sudah sampai hari ini!</p>
+                </div>
+                <img src="https://via.placeholder.com/60x60/333333/ffffff?text=Sepatu" alt="Review Image" class="review-image">
+            </div>
+        </div>
+        
+        <div class="similar-products">
+            <div class="section-title">Produk Serupa</div>
+            <div class="product-slider">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/120x100/f6f6f6/333333?text=Sepatu+1" alt="Similar Product">
+                    <div class="product-card-info">
+                        <div class="product-card-title">Sepatu Slip-on</div>
+                        <div class="product-card-price">Rp 95.000</div>
+                        <div class="product-card-rating">★★★★☆</div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/120x100/f6f6f6/333333?text=Sepatu+2" alt="Similar Product">
+                    <div class="product-card-info">
+                        <div class="product-card-title">Sepatu Air Max</div>
+                        <div class="product-card-price">Rp 157.000</div>
+                        <div class="product-card-rating">★★★★☆</div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/120x100/f6f6f6/333333?text=Sepatu+3" alt="Similar Product">
+                    <div class="product-card-info">
+                        <div class="product-card-title">Sepatu Old School</div>
+                        <div class="product-card-price">Rp 88.000</div>
+                        <div class="product-card-rating">★★★★★</div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/120x100/f6f6f6/333333?text=Sepatu+4" alt="Similar Product">
+                    <div class="product-card-info">
+                        <div class="product-card-title">Sepatu Air Force</div>
+                        <div class="product-card-price">Rp 175.000</div>
+                        <div class="product-card-rating">★★★★☆</div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/120x100/f6f6f6/333333?text=Sepatu+5" alt="Similar Product">
+                    <div class="product-card-info">
+                        <div class="product-card-title">Sepatu Yeezy</div>
+                        <div class="product-card-price">Rp 189.000</div>
+                        <div class="product-card-rating">★★★★★</div>
+                    </div>
                 </div>
             </div>
         </div>
-        <p class="copyright">© 2025 STREET STRAIDERS. All Rights Reserved</p>
-    </footer>
+    </div>
 
-    <script src="{{asset('user/script.js')}}"></script>
-</body>
-
-</html>
-
-<form method="POST" action="{{ route('logout') }}">
-    @csrf
-    <!-- Link yang akan submit form -->
-    <x-responsive-nav-link :href="route('logout')"
-        onclick="event.preventDefault();
-                 this.closest('form').submit();">
-        {{ __('Log Out') }}
-    </x-responsive-nav-link>
-</form>
+    <script>
+        // Size button selection
+        const sizeButtons = document.querySelectorAll('.size-button');
+        sizeButtons.forEach(button => {
+            button.addEventListener('click', () => {
