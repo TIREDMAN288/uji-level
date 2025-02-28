@@ -73,134 +73,19 @@
             </div>
             <div class="product-box">
                 <div class="product-list">
-                    <!-- Contoh produk -->
+                    @foreach($produks as $produk)
                     <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
+                        <img src="{{ asset('storage/' . $produk->foto) }}" alt="{{ $produk->judul }}">
+                        <h4>{{ $produk->judul }}</h4>
+                        <p>Rp {{ number_format($produk->harga, 0, ',', '.') }}</p>
+                        <p>Warna: {{ ucfirst($produk->warna) }}</p>
+                        <div class="rating">
+                            {!! str_repeat('&#9733;', $produk->rating) !!}
+                            {!! str_repeat('&#9734;', 5 - $produk->rating) !!}
+                            <span>({{ $produk->rating }})</span>
+                        </div>
                     </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <div class="product">
-                        <img src="{{asset('image/asset -ujilevel/Access Denied.jpeg')}}" alt="Sepatu Jalan-Jalan">
-                        <h4>Sepatu Jalan-Jalan</h4>
-                        <p>Rp 100,000</p>
-                        <p>Color: White</p>
-                        <div class="rating">★★★★★ <span>(5)</span></div>
-                    </div>
-                    <!-- Tambahkan produk lainnya -->
+                    @endforeach
                 </div>
             </div>
         </div>

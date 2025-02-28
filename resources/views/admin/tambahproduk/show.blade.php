@@ -9,7 +9,7 @@
     <h1>Detail Produk</h1>
 
     <p><strong>Foto:</strong></p>
-    <img src="{{ asset('storage/' . $produk->foto) }}" alt="Foto Produk" width="200"><br><br>
+    <img src="{{ asset('storage/' . $produks->foto) }}" alt="Foto Produk" width="200"><br><br>
 
     <p><strong>Judul:</strong> {{ $produk->judul }}</p>
     <p><strong>Harga:</strong> {{ $produk->harga }}</p>

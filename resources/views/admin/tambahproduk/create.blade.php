@@ -76,10 +76,10 @@
     <div class="container">
         <h1>Tambah Produk Baru</h1>
 
-        <form action="{{ route('tambahproduk.store') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <label for="foto">Foto:</label>
-            <input type="file" name="foto" id="foto" required><br><br>
+    <form action="{{ route('tambahproduk.store') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <label for="foto">Foto:</label>
+        <input type="file" name="foto" id="foto" required><br><br>
 
             <label for="judul">Judul:</label>
             <input type="text" name="judul" id="judul" required><br><br>
@@ -96,10 +96,7 @@
             <button type="submit">Simpan Produk</button>
         </form>
 
-        <div class="back-link">
-            <a href="{{ route('tambahproduk.index') }}">Kembali ke Daftar Produk</a>
-        </div>
-    </div>
-
+    <br>
+    <a href="{{ route('tambahproduk.index') }}">Kembali ke Daftar Produk</a>
 </body>
 </html>

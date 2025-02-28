@@ -76,9 +76,9 @@
     <div class="container">
         <h1>Edit Produk</h1>
 
-        <form action="{{ route('tambahproduk.update', $produk->id) }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
+    <form action="{{ route('tambahproduk.update', $produk->id) }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('PUT')
 
             <label for="foto">Foto:</label>
             <input type="file" name="foto" id="foto"><br><br>
@@ -98,10 +98,7 @@
             <button type="submit">Perbarui Produk</button>
         </form>
 
-        <div class="back-link">
-            <a href="{{ route('tambahproduk.index') }}">Kembali ke Daftar Produk</a>
-        </div>
-    </div>
-
+    <br>
+    <a href="{{ route('tambahproduk.index') }}">Kembali ke Daftar Produk</a>
 </body>
 </html>

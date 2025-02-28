@@ -18,11 +18,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   let currentSlideIndex = 0;
-  // const slides = @json([
-  //     asset('image/asset-ujilevel/header.jpeg'),
-  //     asset('image/asset-ujilevel/header1.png'),
-  //     asset('image/asset-ujilevel/header.jpeg')
-  // ]);
+  const slides = [
+    "{{asset('image/asset -ujilevel/header.jpeg')}}", 
+    "{{asset('image/asset -ujilevel/header1.png')}}", 
+    "{{asset('image/asset -ujilevel/header.jpeg')}}"  
+  ];
 
   function changeSlide() {
       let imgElement = document.getElementById("slideImage");
